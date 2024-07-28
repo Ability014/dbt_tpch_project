@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: tpch
+    description: "This is the database for the RAW tables in tpch in snowflake"
+    database: SNOWFLAKE_SAMPLE_DATA
+    schema: TPCH_SF1
+    tables:
+      - name: customer
+      - name: lineitem
+      - name: orders
+      - name: nation
+      - name: region
+      - name: supplier
+      - name: part
+      - name: partsupp

@@ -1,0 +1,40 @@
+models:
+    - name: dim_customers
+      columns:
+        - name: customer_key
+          tests:
+            - unique
+            - not_null
+    - name: dim_part_suppliers
+      columns:
+        - name: partsupp_key
+          tests:
+            - unique
+            - not_null
+    - name: dim_dates
+      columns:
+        - name: date_key
+          tests:
+            - unique
+            - not_null
+    - name: fact_orders
+      columns:
+        - name: orderline_key
+          tests:
+            - unique
+            - not_null
+        - name: customer_key
+          tests:
+            - relationships:
+                to: ref('dim_customers')
+                field: customer_key
+        - name: partsupp_key
+          tests:
+            - relationships:
+                to: ref('dim_part_suppliers')
+                field: partsupp_key
+        - name: order_date_key
+          tests:
+            - relationships:
+                to: ref('dim_dates')
+                field: date_key
