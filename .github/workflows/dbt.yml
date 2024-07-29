@@ -1,0 +1,33 @@
+name: DBT Core Job
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+jobs:
+  dbt-run:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+    - name: Install dbt
+      run: pip install dbt-core
+    - name: Run dbt
+      run: |
+        dbt run
+        dbt docs generate
+    - name: Upload run_results.json
+      uses: actions/upload-artifact@v2
+      with:
+        name: dbt-run-results
+        path: target/run_results.json
+    - name: Upload manifest.json
+      uses: actions/upload-artifact@v2
+      with:
+        name: dbt-manifest
+        path: target/manifest.json
