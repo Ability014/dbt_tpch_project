@@ -21,6 +21,7 @@ jobs:
       run: |
         mkdir /home/runner/.dbt
         cp profiles.yml /home/runner/.dbt/
+        dbt deps
         dbt run
         dbt docs generate
     - name: Upload run_results.json
