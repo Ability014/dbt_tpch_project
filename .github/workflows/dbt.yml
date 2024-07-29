@@ -4,6 +4,9 @@ on:
     branches:
       - main
   workflow_dispatch:
+
+env:
+  snowflake_pass: ${{ secrets.SNOWFLAKE_PASS }}
 jobs:
   dbt-run:
     runs-on: ubuntu-latest
