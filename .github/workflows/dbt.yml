@@ -4,6 +4,10 @@ on:
     branches:
       - main
   workflow_dispatch:
+
+env:
+  snowflake_pass: ${{ secrets.SNOWFLAKE_PASS }}
+  
 jobs:
   dbt-run:
     runs-on: ubuntu-latest
@@ -23,6 +27,7 @@ jobs:
         cp profiles.yml /home/runner/.dbt/
         dbt deps
         dbt run
+        dbt test
         dbt docs generate
     - name: Upload run_results.json
       uses: actions/upload-artifact@v2
