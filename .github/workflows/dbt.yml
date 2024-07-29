@@ -27,7 +27,7 @@ jobs:
         cp profiles.yml /home/runner/.dbt/
         export snowflake_pass=${{ secrets.SNOWFLAKE_PASS }}
         dbt deps
-        dbt run
+        dbt run --full-refresh
         dbt test
         dbt docs generate
     - name: Upload run_results.json

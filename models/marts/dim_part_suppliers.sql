@@ -11,6 +11,7 @@ with part_suppliers as (
     select
         {{ dbt_utils.generate_surrogate_key(['ps.part_id', 'ps.supplier_id']) }} as partsupp_key,
         ps.part_id,
+        row_number() over (partition by ps.part_id order by ps.supplier_id) as surr_partsupp,
         ps.supplier_id,
         available_quantity,
         supply_cost,
