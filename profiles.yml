@@ -3,7 +3,7 @@ dbt_tpch_poc:
     dev:
       account: ynb38656.us-east-1
       database: ORBIT_MDS
-      password: ${{ secrets.SNOWFLAKE_PASS }}
+      password: '{{ env_var(''snowflake_pass'') }}'
       role: AIRBYTE_ADMIN
       schema: RAW
       threads: 2
