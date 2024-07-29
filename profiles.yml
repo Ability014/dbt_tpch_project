@@ -1,0 +1,23 @@
+dbt_tpch_poc:
+  outputs:
+    dev:
+      account: ynb38656.us-east-1
+      database: ORBIT_MDS
+      password: ${{ secrets.SNOWFLAKE_PASS }}
+      role: AIRBYTE_ADMIN
+      schema: RAW
+      threads: 2
+      type: snowflake
+      user: AIRBYTE014
+      warehouse: MDS_WAREHOUSE
+    prod:
+      account: ynb38656.us-east-1
+      database: ORBIT_MDS
+      password: ${{ secrets.SNOWFLAKE_PASS }}
+      role: AIRBYTE_ADMIN
+      schema: RAW
+      threads: 2
+      type: snowflake
+      user: AIRBYTE014
+      warehouse: MDS_WAREHOUSE
+  target: prod

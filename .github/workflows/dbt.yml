@@ -19,6 +19,8 @@ jobs:
       run: pip install dbt-core
     - name: Run dbt
       run: |
+        mkdir /home/runner/.dbt
+        cp profiles.yml /home/runner/.dbt/
         dbt run
         dbt docs generate
     - name: Upload run_results.json
