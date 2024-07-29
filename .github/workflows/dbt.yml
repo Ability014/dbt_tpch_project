@@ -25,6 +25,7 @@ jobs:
       run: |
         mkdir /home/runner/.dbt
         cp profiles.yml /home/runner/.dbt/
+        export snowflake_pass=${{ secrets.SNOWFLAKE_PASS }}
         dbt deps
         dbt run
         dbt test
